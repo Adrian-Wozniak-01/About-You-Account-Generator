@@ -95,7 +95,7 @@ def work():
             pass
 
         register = WebDriverWait(driver, 3, 1).until(
-            lambda d: d.find_element_by_xpath("/html/body/main/div[1]/header/div/div[1]/div[3]/ul/li[2]/div/a"))
+            lambda d: d.find_element_by_xpath("/html/body/main/div[2]/header/div/div[1]/div[3]/ul/li[2]/div/a"))
         register.click()
 
         first_name = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
