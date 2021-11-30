@@ -19,7 +19,6 @@ print("KryptoN#2137 AboutYou Account Generator")
 print("---------------------------------------")
 print(Fore.WHITE)
 
-# Make sure chromedriver is in the same folder
 
 def slow_type(element, text, delay=0.1):
     for character in text:
@@ -39,6 +38,7 @@ def work():
     how_many = int(input('How many accounts do you want: '))
     firstName = input('First name: ')
     lastName = input('Last name: ')
+    #discord_webhook = input('Input webhook or leave blank: ')
 
     def answer_1():
         global pass_choice, password_return, password_max_lenght, password_static_return
@@ -82,41 +82,41 @@ def work():
 
         driver.get("https://www.aboutyou.pl/?loginFlow=register")
         start = time.time()
-        time.sleep(3)
+        time.sleep(1)
 
-        cookie = WebDriverWait(driver, 4, 1).until(lambda d: d.find_element_by_xpath(
+        cookie = WebDriverWait(driver, 3, 0.3).until(lambda d: d.find_element_by_xpath(
             "/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/button[2]"))
         cookie.click()
-        try:
-            mobile_button = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
-                "/html/body/main/div[7]/button"))
-            mobile_button.click()
-        except:
-            pass
+        # try:
+        #    mobile_button = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
+        #        "/html/body/main/div[7]/button"))
+        #    mobile_button.click()
+        # except:
+        #    pass
 
-        register = WebDriverWait(driver, 3, 1).until(
-            lambda d: d.find_element_by_xpath("/html/body/main/div[2]/header/div/div[1]/div[3]/ul/li[2]/div/a"))
+        register = WebDriverWait(driver, 3, 0.3).until(
+            lambda d: d.find_element_by_xpath("/html/body/main/div[1]/header/div/div[1]/div[3]/ul/li[2]/div/a"))
         register.click()
 
-        first_name = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
+        first_name = WebDriverWait(driver, 3, 0.3).until(lambda d: d.find_element_by_xpath(
             "/html/body/div[3]/div/div/div/div/div[2]/div[2]/form/div[1]/div[1]/label/input"))
         first_name.clear()
         first_name.send_keys(firstName)
         #slow_type(first_name, firstName)
 
-        last_name = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
+        last_name = WebDriverWait(driver, 3, 0.3).until(lambda d: d.find_element_by_xpath(
             "/html/body/div[3]/div/div/div/div/div[2]/div[2]/form/div[1]/div[2]/label/input"))
         last_name.clear()
         last_name.send_keys(lastName)
         #slow_type(last_name, lastName)
 
-        email_address = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
+        email_address = WebDriverWait(driver, 3, 0.3).until(lambda d: d.find_element_by_xpath(
             "/html/body/div[3]/div/div/div/div/div[2]/div[2]/form/div[2]/div[1]/label/input"))
         email_address.clear()
         email_address.send_keys(email_return)
         #slow_type(email_address, email_return)
 
-        password = WebDriverWait(driver, 3, 1).until(lambda d: d.find_element_by_xpath(
+        password = WebDriverWait(driver, 3, 0.3).until(lambda d: d.find_element_by_xpath(
             "/html/body/div[3]/div/div/div/div/div[2]/div[2]/form/div[2]/div[2]/label/input"))
         password.clear()
         password.send_keys(password_return)
@@ -133,7 +133,7 @@ def work():
         newsletter.click()
 
         time.sleep(0.5)
-        # Register
+        # Zarejestruj się
         register = WebDriverWait(driver, 3, 0.1).until(lambda d: d.find_element_by_xpath(
             "/html/body/div[3]/div/div/div/div/div[2]/div[2]/form/div[4]/button/span"))
         register.click()
@@ -173,11 +173,14 @@ def work():
                 embed.add_embed_field(name='⏰Time', value=str(creating_time))
                 webhook.add_embed(embed)
                 response = webhook.execute()
-            
+            # else webhook, że nie udało się
 
         driver.quit()
 
 
 work()
-# Discord:
+
+# write to file
+
+
 # KryptoN#2137
