@@ -93,9 +93,10 @@ def work():
         #    mobile_button.click()
         # except:
         #    pass
-
+        
+        # if fails (ay changed something) take input from the user
         register = WebDriverWait(driver, 3, 0.3).until(
-            lambda d: d.find_element_by_xpath("/html/body/main/div[1]/header/div/div[1]/div[3]/ul/li[2]/div/a"))
+            lambda d: d.find_element_by_xpath("/html/body/main/div[2]/header/div/div[1]/div[3]/ul/li[3]/div/a"))
         register.click()
 
         first_name = WebDriverWait(driver, 3, 0.3).until(lambda d: d.find_element_by_xpath(
@@ -173,14 +174,12 @@ def work():
                 embed.add_embed_field(name='⏰Time', value=str(creating_time))
                 webhook.add_embed(embed)
                 response = webhook.execute()
-            # else webhook, że nie udało się
+            
 
         driver.quit()
 
 
 work()
-
-# write to file
 
 
 # KryptoN#2137
